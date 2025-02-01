@@ -159,11 +159,11 @@ public partial class MareHub
         }
 
         var gid = StringUtils.GenerateRandomString(12);
-        while (await DbContext.Groups.AnyAsync(g => g.GID == "MSS-" + gid).ConfigureAwait(false))
+        while (await DbContext.Groups.AnyAsync(g => g.GID == "NSS-" + gid).ConfigureAwait(false))
         {
             gid = StringUtils.GenerateRandomString(12);
         }
-        gid = "MSS-" + gid;
+        gid = "NSS-" + gid;
 
         var passwd = StringUtils.GenerateRandomString(16);
         using var sha = SHA256.Create();
