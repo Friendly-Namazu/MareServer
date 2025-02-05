@@ -23,7 +23,7 @@ public partial class MareWizardModule
         EmbedBuilder eb = new();
         eb.WithColor(Color.Blue);
         eb.WithTitle("Start Registration");
-        eb.WithDescription("Here you can start the registration process with the Mare Synchronos server of this Discord." + Environment.NewLine + Environment.NewLine
+        eb.WithDescription("Here you can start the registration process with the Namazu Sync server of this Discord." + Environment.NewLine + Environment.NewLine
             + "- Have your Lodestone URL ready (i.e. https://eu.finalfantasyxiv.com/lodestone/character/XXXXXXXXX)" + Environment.NewLine
             + "  - The registration requires you to modify your Lodestone profile with a generated code for verification" + Environment.NewLine
             + "- Do not use this on mobile because you will need to be able to copy the generated secret key" + Environment.NewLine
@@ -135,7 +135,7 @@ public partial class MareWizardModule
                                              + Environment.NewLine + Environment.NewLine
                                              + $"**{key}**"
                                              + Environment.NewLine + Environment.NewLine
-                                             + "Enter this key in Mare Synchronos and hit save to connect to the service."
+                                             + "Enter this key in Namazu Sync and hit save to connect to the service."
                                              + Environment.NewLine
                                              + "__NOTE: The Secret Key only contains the letters ABCDEF and numbers 0 - 9.__"
                                              + Environment.NewLine
@@ -211,9 +211,9 @@ public partial class MareWizardModule
                               + Environment.NewLine + Environment.NewLine
                               + $"**{lodestoneAuth}**"
                               + Environment.NewLine + Environment.NewLine
-                              + $"**! THIS IS NOT THE KEY YOU HAVE TO ENTER IN MARE !**"
+                              + $"**! THIS IS NOT THE KEY YOU HAVE TO ENTER IN NAMAZU !**"
                               + Environment.NewLine + Environment.NewLine
-                              + "Once added and saved, use the button below to Verify and finish registration and receive a secret key to use for Mare Synchronos."
+                              + "Once added and saved, use the button below to Verify and finish registration and receive a secret key to use for Namazu Sync."
                               + Environment.NewLine
                               + "__You can delete the entry from your profile after verification.__"
                               + Environment.NewLine + Environment.NewLine

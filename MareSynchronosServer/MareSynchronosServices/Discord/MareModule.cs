@@ -196,7 +196,7 @@ public class MareModule : InteractionModuleBase
         if (primaryUser == null)
         {
             eb.WithTitle("No account");
-            eb.WithDescription("No Mare account was found associated to your Discord user");
+            eb.WithDescription("No Namazu account was found associated to your Discord user");
             return eb;
         }
 
@@ -223,7 +223,7 @@ public class MareModule : InteractionModuleBase
             if (userInDb == null)
             {
                 eb.WithTitle("No account");
-                eb.WithDescription("The Discord user has no valid Mare account");
+                eb.WithDescription("The Discord user has no valid Namazu account");
                 return eb;
             }
 

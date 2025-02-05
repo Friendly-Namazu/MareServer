@@ -52,7 +52,7 @@ public abstract class AuthControllerBase : Controller
         if (!authResult.Success && !authResult.TempBan)
         {
             Logger.LogWarning("Authenticate:INVALID:{id}:{ident}", authResult?.Uid ?? "NOUID", charaIdent);
-            return Unauthorized("The provided secret key is invalid. Verify your Mare accounts existence and/or recover the secret key.");
+            return Unauthorized("The provided secret key is invalid. Verify your Namazu accounts existence and/or recover the secret key.");
         }
         if (!authResult.Success && authResult.TempBan)
         {
@@ -69,14 +69,14 @@ public abstract class AuthControllerBase : Controller
             }
 
             Logger.LogWarning("Authenticate:UIDBAN:{id}:{ident}", authResult.Uid, charaIdent);
-            return Unauthorized("Your Mare account is banned from using the service.");
+            return Unauthorized("Your Namazu account is banned from using the service.");
         }
 
         var existingIdent = await _redis.StringGetAsync("UID:" + authResult.Uid);
         if (!string.IsNullOrEmpty(existingIdent))
         {
             Logger.LogWarning("Authenticate:DUPLICATE:{id}:{ident}", authResult.Uid, charaIdent);
-            return Unauthorized("Already logged in to this Mare account. Reconnect in 60 seconds. If you keep seeing this issue, restart your game.");
+            return Unauthorized("Already logged in to this Namazu account. Reconnect in 60 seconds. If you keep seeing this issue, restart your game.");
         }
 
         Logger.LogInformation("Authenticate:SUCCESS:{id}:{ident}", authResult.Uid, charaIdent);

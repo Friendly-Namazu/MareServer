@@ -147,9 +147,9 @@ public class OAuthController : AuthControllerBase
         var mareUser = await dbContext.LodeStoneAuth.Include(u => u.User).SingleOrDefaultAsync(u => u.DiscordId == discordUserId);
         if (mareUser == default)
         {
-            Logger.LogDebug("Failed to get Mare user for {session}, DiscordId: {id}", reqId, discordUserId);
+            Logger.LogDebug("Failed to get Namazu user for {session}, DiscordId: {id}", reqId, discordUserId);
 
-            return BadRequest("Could not find a Mare user associated to this Discord account.");
+            return BadRequest("Could not find a Namazu user associated to this Discord account.");
         }
 
         JwtSecurityToken? jwt = null;

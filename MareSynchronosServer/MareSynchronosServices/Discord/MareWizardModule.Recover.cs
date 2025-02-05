@@ -21,7 +21,7 @@ public partial class MareWizardModule
         eb.WithColor(Color.Blue);
         eb.WithTitle("Recover");
         eb.WithDescription("In case you have lost your secret key you can recover it here." + Environment.NewLine + Environment.NewLine
-            + "## ⚠️ **Once you recover your key, the previously used key will be invalidated. If you use Mare on multiple devices you will have to update the key everywhere you use it.** ⚠️" + Environment.NewLine + Environment.NewLine
+            + "## ⚠️ **Once you recover your key, the previously used key will be invalidated. If you use Namazu on multiple devices you will have to update the key everywhere you use it.** ⚠️" + Environment.NewLine + Environment.NewLine
             + "Use the selection below to select the user account you want to recover." + Environment.NewLine + Environment.NewLine
             + "- 1️⃣ is your primary account/UID" + Environment.NewLine
             + "- 2️⃣ are all your secondary accounts/UIDs" + Environment.NewLine
@@ -79,7 +79,7 @@ public partial class MareWizardModule
                               + Environment.NewLine
                               +" __NOTE: If you are using the suggested OAuth2 authentication, you do not need to use the Secret Key__"
                               + Environment.NewLine + Environment.NewLine
-                              + "Enter this key in the Mare Synchronos Service Settings and reconnect to the service.");
+                              + "Enter this key in the Namazu Sync Service Settings and reconnect to the service.");
 
         await db.Auth.AddAsync(auth).ConfigureAwait(false);
         await db.SaveChangesAsync().ConfigureAwait(false);

@@ -19,7 +19,7 @@ public partial class MareWizardModule
         EmbedBuilder eb = new();
         eb.WithTitle("Relink");
         eb.WithColor(Color.Blue);
-        eb.WithDescription("Use this in case you already have a registered Mare account, but lost access to your previous Discord account." + Environment.NewLine + Environment.NewLine
+        eb.WithDescription("Use this in case you already have a registered Namazu account, but lost access to your previous Discord account." + Environment.NewLine + Environment.NewLine
             + "- Have your original registered Lodestone URL ready (i.e. https://eu.finalfantasyxiv.com/lodestone/character/XXXXXXXXX)" + Environment.NewLine
             + "  - The relink process requires you to modify your Lodestone profile with a generated code for verification" + Environment.NewLine
             + "- Do not use this on mobile because you will need to be able to copy the generated secret key");
@@ -126,7 +126,7 @@ public partial class MareWizardModule
                                              + Environment.NewLine + Environment.NewLine
                                              + $"**{key}**"
                                              + Environment.NewLine + Environment.NewLine
-                                             + "Enter this key in Mare Synchronos and hit save to connect to the service."
+                                             + "Enter this key in Namazu Sync and hit save to connect to the service."
                                              + Environment.NewLine
                                              + "Have fun.");
                 AddHome(cb);
@@ -194,7 +194,7 @@ public partial class MareWizardModule
                               + Environment.NewLine + Environment.NewLine
                               + $"**{lodestoneAuth}**"
                               + Environment.NewLine + Environment.NewLine
-                              + $"**! THIS IS NOT THE KEY YOU HAVE TO ENTER IN MARE !**"
+                              + $"**! THIS IS NOT THE KEY YOU HAVE TO ENTER IN NAMAZU !**"
                               + Environment.NewLine
                               + "__You can delete the entry from your profile after verification.__"
                               + Environment.NewLine + Environment.NewLine

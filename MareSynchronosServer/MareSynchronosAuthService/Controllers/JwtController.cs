@@ -49,7 +49,7 @@ public class JwtController : AuthControllerBase
                 var userAuth = await dbContext.Auth.SingleAsync(u => u.UserUID == uid);
                 await EnsureBan(uid, userAuth.PrimaryUserUID, ident);
 
-                return Unauthorized("Your Mare account is banned.");
+                return Unauthorized("Your Namazu account is banned.");
             }
 
             if (await IsIdentBanned(dbContext, ident))
