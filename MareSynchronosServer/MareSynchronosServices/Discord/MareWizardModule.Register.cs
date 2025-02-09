@@ -21,16 +21,44 @@ public partial class MareWizardModule
         _logger.LogInformation("{method}:{userId}", nameof(ComponentRegister), Context.Interaction.User.Id);
 
         EmbedBuilder eb = new();
-        eb.WithColor(Color.Blue);
-        eb.WithTitle("Start Registration");
-        eb.WithDescription("Here you can start the registration process with the Namazu Sync server of this Discord." + Environment.NewLine + Environment.NewLine
-            + "- Have your Lodestone URL ready (i.e. https://eu.finalfantasyxiv.com/lodestone/character/XXXXXXXXX)" + Environment.NewLine
-            + "  - The registration requires you to modify your Lodestone profile with a generated code for verification" + Environment.NewLine
-            + "- Do not use this on mobile because you will need to be able to copy the generated secret key" + Environment.NewLine
-            + "# Follow the bot instructions precisely. Slow down and read.");
+        // eb.WithColor(Color.Blue);
+        // eb.WithTitle("Start Registration");
+        // eb.WithDescription("Here you can start the registration process with the Namazu Sync server of this Discord." + Environment.NewLine + Environment.NewLine
+        //     + "- Have your Lodestone URL ready (i.e. https://eu.finalfantasyxiv.com/lodestone/character/XXXXXXXXX)" + Environment.NewLine
+        //     + "  - The registration requires you to modify your Lodestone profile with a generated code for verification" + Environment.NewLine
+        //     + "- Do not use this on mobile because you will need to be able to copy the generated secret key" + Environment.NewLine
+        //     + "# Follow the bot instructions precisely. Slow down and read.");
+        // ComponentBuilder cb = new();
+        // AddHome(cb);
+        // cb.WithButton("Start Registration", "wizard-register-start", ButtonStyle.Primary, emote: new Emoji("🌒"));
+
+        var registerSuccess = false;
+
+        eb.WithColor(Color.Green);
+        using var db = await GetDbContext().ConfigureAwait(false);
+        string lodestoneAuth = await GenerateLodestoneAuth(Context.User.Id, null, db).ConfigureAwait(false);
+        var (uid, key) = await HandleAddUser(db).ConfigureAwait(false);
+        eb.WithTitle($"Registration successful, your UID: {uid}");
+        eb.WithDescription("This is your private secret key. Do not share this private secret key with anyone. **If you lose it, it is irrevocably lost.**"
+                           + Environment.NewLine + Environment.NewLine
+                           + $"**{key}**"
+                           + Environment.NewLine + Environment.NewLine
+                           + "Enter this key in Namazu Sync and hit save to connect to the service."
+                           + Environment.NewLine
+                           + "__NOTE: The Secret Key only contains the letters ABCDEF and numbers 0 - 9.__"
+                           + Environment.NewLine
+                           + " __NOTE: Secret keys are considered legacy. Using the suggested OAuth2 authentication, you do not need to use this Secret Key.__"
+                           + Environment.NewLine
+                           + "You should connect as soon as possible to not get caught by the automatic cleanup process."
+                           + Environment.NewLine
+                           + "Have fun."
+        );
         ComponentBuilder cb = new();
         AddHome(cb);
-        cb.WithButton("Start Registration", "wizard-register-start", ButtonStyle.Primary, emote: new Emoji("🌒"));
+        if (registerSuccess) {
+            await _botServices.AddRegisteredRoleAsync(Context.Interaction.User).ConfigureAwait(false);
+        }
+        
         await ModifyInteraction(eb, cb).ConfigureAwait(false);
     }
 
